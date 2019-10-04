@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -298,6 +299,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        }
+
+        @Override
+        protected void onRestoreInstanceState(Bundle savedIntanceState){
+            super.onRestoreInstanceState(savedIntanceState);
+            String stateSaved = savedIntanceState.getString("saved_state");
+            if(stateSaved == null){
+                Toast.makeText(MainActivity.this,"onRestoreInstanceState:\n" + "No State Saved!", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(MainActivity.this, "onRestoreInstanceState:\n" + "Saved State = " +stateSaved, Toast.LENGTH_LONG).show();
+            }
         }
 
 
